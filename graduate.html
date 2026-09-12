@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congratulations Graduate 🎓</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;600&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 50px 30px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            max-width: 90%;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+        }
+
+        p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 2;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+        }
+
+        .emoji-group {
+            font-size: 4rem;
+            animation: bounce 1.5s infinite;
+            margin-bottom: 20px;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0.8;
+        }
+
+        .floating-emoji {
+            position: absolute;
+            bottom: -50px;
+            font-size: 30px;
+            animation: float 8s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            20% { opacity: 1; }
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .highlight {
+            font-weight: 600;
+            color: #ffd700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .pride-message {
+            font-style: italic;
+            margin-top: 25px;
+            font-size: 1.4rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="emoji-group">🎓❤️‍🔥</div>
+        <h1>Congratulations Graduate</h1>
+        <p>
+            You keep winning and<br>
+            <span class="highlight">keep making us proud</span> ❤️‍🔥
+        </p>
+        <p>
+            I'm <span class="highlight">proud of you</span>.<br>
+            Your younger self should be proud.
+        </p>
+        <p class="pride-message">
+            This is your moment. Celebrate it. 🌟
+        </p>
+    </div>
+
+    <script>
+        const emojis = ['🎓', '⭐', '🌟', '✨', '🎉', '❤️‍🔥', '🔥'];
+
+        function createFloatingEmoji() {
+            const emoji = document.createElement('div');
+            emoji.classList.add('floating-emoji');
+            emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+
+            emoji.style.left = Math.random() * 100 + 'vw';
+            emoji.style.animationDuration = (Math.random() * 5 + 5) + 's';
+
+            document.body.appendChild(emoji);
+
+            setTimeout(() => {
+                emoji.remove();
+            }, 10000);
+        }
+
+        setInterval(createFloatingEmoji, 600);
+
+        // Confetti effect
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.top = '-10px';
+            confetti.style.backgroundColor = ['#ffd700', '#ff6b9d', '#667eea', '#764ba2', '#ffffff'][Math.floor(Math.random() * 5)];
+            confetti.style.animation = `float ${Math.random() * 3 + 4}s linear forwards`;
+
+            document.body.appendChild(confetti);
+
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000);
+        }
+
+        setInterval(createConfetti, 200);
+    </script>
+
+</body>
+</html>
